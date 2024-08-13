@@ -11,17 +11,7 @@
 - [2024-07-31 정혜나] 팔로잉 기능 구현
 - [2024-08-01 남기동] 유저 명언 조회, 조회 기록 삭제, 프로필 수정/삭제
 - [2024-08-07 남기동] 서버 파일들로 최종 업데이트
-
-<br>
-
-## 서버 이용 방법
-- pem키 사용 없이 ID, Password로 접속 가능하게 변경해두었습니다
-- Putty에서 Host Name에 15.164.27.255, Port 22로 설정하고 Open
-- ID : ec2-user
-- PASSWORD : shinsudong
-- (확인용) 'http://15.164.27.255/quote/', 'http://15.164.27.255/accounts/register/' 로 체크 가능
-- (Admin 'http://15.164.27.255/admin/' ) Email : admin@google.com, Password : admin 
-
+- [2024-08-13 남기동] Ubuntu 서버, Docker 환경에 따른 코드 세팅
 
 <br>
 
@@ -35,7 +25,7 @@ $ source ./venv/Scripts/activate
 $ pip install -r requirements.txt
 
 # 필요에 따라 PostgreSQL Docker Container 생성 및 실행
-$ docker run -p 5432:5432 --name test-postgres -e POSTGRES_PASSWORD=1234 -e TZ=Asia/Seoul -d postgres:latest
+$ docker run -p 5432:5432 --name test-postgres -e POSTGRES_PASSWORD=1234 -d postgres:latest
 # docker exec -it {container_id} bash --> psql -U postgres --> create database quote_db; --> exit --> exit
 
 # accounts, quote의 models.py에 ForeignKey, ManyToManyField 주석처리하고
