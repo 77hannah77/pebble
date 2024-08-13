@@ -64,7 +64,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites', #추가
-    'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework.authtoken',
@@ -96,7 +95,8 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (  
-        'rest_framework.authentication.TokenAuthentication',
+        #'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 }
 
@@ -144,7 +144,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # _psycopg2
         'NAME': os.environ['DB_NAME'],
         'USER':os.environ['DB_USER'],
         'PASSWORD':os.environ['DB_PASSWORD'],
@@ -188,11 +188,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 # URL, ROOT 설정
-STATIC_URL = '/static/'
+STATIC_URL = 'https://www.pebblequote.site/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # 미디어 파일 설정
-MEDIA_URL = '/media/'
+MEDIA_URL = 'https://www.pebblequote.site/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type

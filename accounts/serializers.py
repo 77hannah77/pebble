@@ -35,7 +35,7 @@ class LoginSerializer(serializers.Serializer):
 
 class ProfileImageField(serializers.ImageField):
     def to_representation(self, value):
-        return f"https://pebblequote.site{settings.MEDIA_URL}{value}"
+        return f"{settings.MEDIA_URL}{value}"
     
 class SimpleUserSerializer(serializers.ModelSerializer):
     registered_quotes = QuoteForProfileSerializer(many=True, read_only=True)  # 팔로잉 한 유저가 등록한 명언들을 프로파일 뷰에서 간단하게 보여주기 위해 만듦
